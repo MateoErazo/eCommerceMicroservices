@@ -3,6 +3,7 @@ using eCommerce.Core;
 using eCommerce.API.Middlewares;
 using System.Text.Json.Serialization;
 using eCommerce.Core.Mappers;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 //Add Infrastructure services
@@ -18,6 +19,9 @@ builder.Services.AddControllers()
   });
 
 builder.Services.AddAutoMapper(typeof(ApplicationUserMappingProfile).Assembly);
+
+//FluentValidations
+builder.Services.AddFluentValidationAutoValidation();
 
 //Build the web application
 var app = builder.Build();
